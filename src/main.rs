@@ -1,5 +1,8 @@
-use compose_parser::list_parser;
+use compose_parser::parser;
 
-pub fn main() {
-    println!("{:?}", list_parser::list("[1,1,2,3,5,8]"));
+fn main() {
+    let input = "@Composable fun Example() {}";
+    let parser = parser::parse_composable_function(input);
+    println!("{:?}", parser)
 }
+

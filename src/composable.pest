@@ -1,0 +1,4 @@
+compose_function = { function_declaration }
+function_declaration = { "@Composable fun " ~ function_name ~ "() {}" }
+function_name = { identifier }
+identifier = { ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }

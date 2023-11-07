@@ -7,6 +7,19 @@
     * Text -> an element that has a text field parameter 'text'
     * Image -> an element that has a text field 'image' as a parameter with .png extension
 
+### Technologies
+* Rust and pest
+* Created .pest file with grammar rules
+* Created lib.rs file with parser
+
+### First task
+
+* Parse simple function like this
+```kotlin
+@Composable
+fun Example() {}
+```
+
 ### Example
 
 ```kotlin
