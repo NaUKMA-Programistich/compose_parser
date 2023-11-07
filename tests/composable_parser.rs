@@ -28,4 +28,13 @@ mod parser_tests {
 
         assert!(parser.is_err());
     }
+
+    #[test]
+    fn parser_not_function_name_with_number() {
+        let input = "@Composable fun 123() {}";
+        let parser = compose_parser::parser::parse_composable_function(input);
+        println!("{:?}", parser);
+
+        assert!(parser.is_err());
+    }
 }

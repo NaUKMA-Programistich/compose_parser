@@ -16,8 +16,7 @@
 
 * Parse simple function like this
 ```kotlin
-@Composable
-fun Example() {}
+@Composable fun Example() {}
 ```
 
 ### Example

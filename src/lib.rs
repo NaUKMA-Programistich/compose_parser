@@ -16,7 +16,7 @@ pub mod parser {
 
         let mut tokens = vec![];
 
-        match parser {
+        return match parser {
             Ok(pairs) => {
                 for pair in pairs {
                     let result_parse = parse_composable_pair(pair);
@@ -30,17 +30,17 @@ pub mod parser {
                         }
                     }
                 }
-                return Ok(tokens)
+                Ok(tokens)
             }
             Err(error) => {
                 println!("Error on parser: {}", error);
-                return Err(error);
+                Err(error)
             }
         }
     }
 
     #[doc = r"Struct for parsing composable functions pair"]
-    fn parse_composable_pair(pair: pest::iterators::Pair<Rule>) -> Result<String, pest::error::Error<Rule>> {
+    pub fn parse_composable_pair(pair: pest::iterators::Pair<Rule>) -> Result<String, pest::error::Error<Rule>> {
         return match pair.as_rule() {
             Rule::compose_function => {
                 println!("Parsed Composable function: {:?}", pair.as_str());
