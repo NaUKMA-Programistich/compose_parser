@@ -1,4 +1,10 @@
 compose_function = { function_declaration }
-function_declaration = { "@Composable fun " ~ function_name ~ "() {}" }
+function_declaration = { "@Composable\nfun " ~ function_name ~ "() " ~ block }
 function_name = { identifier }
+block = { "{\n" ~ statement* ~ "}" }
+statement = { text_function | image_function }
+text_function = { "    Text(text = " ~ string ~ ")\n" }
+image_function = { "    Image(image = " ~ string_image ~ ")\n" }
+string = { "\"" ~ (ASCII_ALPHANUMERIC | " ")* ~ "\"" }
+string_image = { "\"" ~ ASCII_ALPHANUMERIC* ~ ".png\"" }
 identifier = { ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }

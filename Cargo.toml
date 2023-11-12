@@ -1,9 +1,9 @@
 [package]
 name = "compose_parser"
-version = "1.0.1"
+version = "2.0.0"
 edition = "2021"
 license = "MIT"
-description = "Rust parser created to parse the Jetpack Compose syntax tree"
+description = "Rust parser created to parse the Jetpack Compose Text and Images"
 authors = ["Dzhos Oleksii"]
 homepage = "https://github.com/NaUKMA-Programistich/compose_parser"
 
