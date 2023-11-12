@@ -1,6 +1,6 @@
 use compose_parser::Content;
 
-pub enum CLI {
+pub enum Cli {
     Help,
     Author,
     File(String),
@@ -8,25 +8,25 @@ pub enum CLI {
     Empty,
 }
 
-impl CLI {
+impl Cli {
     pub fn parse(args: &Vec<String>) -> Self {
         if args.len() < 2 {
-            return CLI::Empty
+            return Cli::Empty;
         }
 
         let command = args.get(1).expect("No command provided");
 
         match command.as_str() {
-            "-h" | "--help" => CLI::Help,
-            "--author" => CLI::Author,
+            "-h" | "--help" => Cli::Help,
+            "--author" => Cli::Author,
             "--file" => {
                 if args.len() < 3 {
-                    return CLI::Unknown("No file provided".to_string())
+                    return Cli::Unknown("No file provided".to_string());
                 }
                 let file = args.get(2).expect("No file provided");
-                CLI::File(file.to_string())
-            },
-            _ => CLI::Unknown(command.to_string()),
+                Cli::File(file.to_string())
+            }
+            _ => Cli::Unknown(command.to_string()),
         }
     }
 
@@ -35,10 +35,10 @@ impl CLI {
         println!("Usage: --author");
     }
 
-    pub(crate) fn parse_command_file(args: String) {
+    pub(crate) fn parse_command_file(args: &str) {
         println!("Uses file command");
 
-        let file_content = std::fs::read_to_string(&args).expect("Unable to read file");
+        let file_content = std::fs::read_to_string(args).expect("Unable to read file");
 
         let result = compose_parser::parse_composable_content(&file_content);
 
@@ -57,7 +57,7 @@ impl CLI {
                         }
                     }
                 }
-            },
+            }
             Err(error) => {
                 println!("Error: {:?}", error)
             }
@@ -70,11 +70,11 @@ impl CLI {
 
     pub(crate) fn parse_command_unknown(args: String) {
         println!("Unknown command: {}", args);
-        CLI::parse_command_help();
+        Cli::parse_command_help();
     }
 
     pub(crate) fn parse_command_empty() {
         println!("No command provided");
-        CLI::parse_command_help();
+        Cli::parse_command_help();
     }
 }

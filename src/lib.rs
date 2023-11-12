@@ -1,5 +1,5 @@
-extern crate pest_derive;
 extern crate pest;
+extern crate pest_derive;
 
 use pest::{Parser, Span};
 use pest_derive::Parser;
@@ -83,18 +83,18 @@ pub fn parse_composable_content(input: &str) -> Result<Vec<Content>, pest::error
                             if let Some(text_function) = statement.into_inner().next() {
                                 tokens.push(Content::Text(text_function.as_str().to_string()));
                             }
-                        },
+                        }
                         Rule::image_function => {
                             if let Some(image_function) = statement.into_inner().next() {
                                 tokens.push(Content::Image(image_function.as_str().to_string()));
                             }
-                        },
+                        }
                         _ => {}
                     }
                 }
             }
             return Ok(tokens);
-        },
+        }
         Err(error) => Err(error),
-    }
+    };
 }

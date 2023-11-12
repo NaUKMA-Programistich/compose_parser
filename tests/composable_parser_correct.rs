@@ -12,7 +12,7 @@ mod parser_tests {
         let result = compose_parser::parse_composable_content(&input);
         let expected = vec![
             Content::FunctionName("Example".to_string()),
-            Content::Text("\"World\"".to_string())
+            Content::Text("\"World\"".to_string()),
         ];
 
         assert!(result.is_ok());
@@ -27,7 +27,7 @@ mod parser_tests {
         let result = compose_parser::parse_composable_content(&input);
         let expected = vec![
             Content::FunctionName("Example".to_string()),
-            Content::Image("\"url.png\"".to_string())
+            Content::Image("\"url.png\"".to_string()),
         ];
 
         assert!(result.is_ok());

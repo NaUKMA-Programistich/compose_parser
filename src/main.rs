@@ -1,16 +1,16 @@
-use crate::cli::CLI;
+use crate::cli::Cli;
 
 mod cli;
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    let cli = CLI::parse(&args);
+    let cli = Cli::parse(&args);
 
     match cli {
-        CLI::Help => CLI::parse_command_help(),
-        CLI::Author => CLI::parse_command_author(),
-        CLI::File(file) => CLI::parse_command_file(file),
-        CLI::Unknown(command) => CLI::parse_command_unknown(command),
-        CLI::Empty => CLI::parse_command_empty(),
+        Cli::Help => Cli::parse_command_help(),
+        Cli::Author => Cli::parse_command_author(),
+        Cli::File(file) => Cli::parse_command_file(file.as_str()),
+        Cli::Unknown(command) => Cli::parse_command_unknown(command),
+        Cli::Empty => Cli::parse_command_empty(),
     }
 }
