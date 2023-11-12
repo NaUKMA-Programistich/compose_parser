@@ -23,16 +23,16 @@ string_image = { "\"" ~ ASCII_ALPHANUMERIC* ~ ".png\"" }
 identifier = { ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }
 ```
 
-compose_function - main function that contains all functions
-function_declaration - function declaration with name and block
-function_name - function name
-block - block with statements, have or text or image
-statement - text or image
-text_function - text function with string
-image_function - image function with string plus png prefix
-string - string with text
-string_image - string with png
-identifier - function name
+* compose_function - main function that contains all functions
+* function_declaration - function declaration with name and block
+* function_name - function name
+* block - block with statements, have or text or image
+* statement - text or image
+* text_function - text function with string
+* image_function - image function with string plus png prefix
+* string - string with text
+* string_image - string with png
+* identifier - function name
 
 ### Technologies
 * Rust and pest
