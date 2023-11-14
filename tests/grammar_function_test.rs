@@ -1,6 +1,6 @@
 mod tests {
-    use pest::Parser;
     use compose_parser::{ComposableFunctionParser, Rule};
+    use pest::Parser;
 
     #[test]
     // text_function = { "    Text(text = " ~ string ~ ")\n" }
@@ -11,16 +11,12 @@ mod tests {
         assert!(correct_pair.is_ok());
         assert_eq!(correct_pair.unwrap().as_str(), input);
 
-        let incorrect_pair = ComposableFunctionParser::parse(
-            Rule::text_function,
-            "    Text(text = \"World\")"
-        );
+        let incorrect_pair =
+            ComposableFunctionParser::parse(Rule::text_function, "    Text(text = \"World\")");
         assert!(incorrect_pair.is_err());
 
-        let incorrect_pair = ComposableFunctionParser::parse(
-            Rule::text_function,
-            "Text(text = \"World\")\n"
-        );
+        let incorrect_pair =
+            ComposableFunctionParser::parse(Rule::text_function, "Text(text = \"World\")\n");
         assert!(incorrect_pair.is_err());
     }
 
@@ -32,29 +28,22 @@ mod tests {
 
         assert!(correct_pair.is_ok());
 
+        let incorrect_pair =
+            ComposableFunctionParser::parse(Rule::image_function, "    Image(image = \"url.png\")");
+        assert!(incorrect_pair.is_err());
 
-        let incorrect_pair = ComposableFunctionParser::parse(
-            Rule::image_function,
-            "    Image(image = \"url.png\")"
-        );
+        let incorrect_pair =
+            ComposableFunctionParser::parse(Rule::image_function, "Image(image = \"url.png\")\n");
         assert!(incorrect_pair.is_err());
 
         let incorrect_pair = ComposableFunctionParser::parse(
             Rule::image_function,
-            "Image(image = \"url.png\")\n"
+            "Image(imageUrl = \"url.png\")\n",
         );
         assert!(incorrect_pair.is_err());
 
-        let incorrect_pair = ComposableFunctionParser::parse(
-            Rule::image_function,
-            "Image(imageUrl = \"url.png\")\n"
-        );
-        assert!(incorrect_pair.is_err());
-
-        let incorrect_pair = ComposableFunctionParser::parse(
-            Rule::image_function,
-            "Image(imageUrl = \"url.png)\n"
-        );
+        let incorrect_pair =
+            ComposableFunctionParser::parse(Rule::image_function, "Image(imageUrl = \"url.png)\n");
         assert!(incorrect_pair.is_err());
     }
 
@@ -69,10 +58,8 @@ mod tests {
         let correct_pair = ComposableFunctionParser::parse(Rule::statement, input);
         assert!(correct_pair.is_ok());
 
-        let incorrect_pair = ComposableFunctionParser::parse(
-            Rule::statement,
-            "    Text(text = \"World\")"
-        );
+        let incorrect_pair =
+            ComposableFunctionParser::parse(Rule::statement, "    Text(text = \"World\")");
         assert!(incorrect_pair.is_err());
     }
 }

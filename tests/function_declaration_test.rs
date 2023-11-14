@@ -1,6 +1,6 @@
 mod tests {
-    use pest::Parser;
     use compose_parser::{ComposableFunctionParser, Rule};
+    use pest::Parser;
 
     #[test]
     // block = { "{\n" ~ statement* ~ "}" }
@@ -30,7 +30,8 @@ mod tests {
 
         assert!(correct_pair.is_ok());
 
-        let input = "@Compose\nfun Example() {\n    Text(text = \"World\")\n    Text(text = \"Hello\")\n}";
+        let input =
+            "@Compose\nfun Example() {\n    Text(text = \"World\")\n    Text(text = \"Hello\")\n}";
         let incorrect_pair = ComposableFunctionParser::parse(Rule::function_declaration, input);
         assert!(incorrect_pair.is_err());
 
@@ -38,7 +39,8 @@ mod tests {
         let incorrect_pair = ComposableFunctionParser::parse(Rule::function_declaration, input);
         assert!(incorrect_pair.is_err());
 
-        let input = "@Composable\nfn Example() {\n    Text(text = \"World\")\n    Text(text = \"Hello\")\n";
+        let input =
+            "@Composable\nfn Example() {\n    Text(text = \"World\")\n    Text(text = \"Hello\")\n";
         let incorrect_pair = ComposableFunctionParser::parse(Rule::function_declaration, input);
         assert!(incorrect_pair.is_err());
 

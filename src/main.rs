@@ -2,7 +2,7 @@ use crate::cli::Cli;
 
 mod cli;
 
-fn main() -> anyhow::Result< () > {
+fn main() -> anyhow::Result<()> {
     let args: Vec<String> = std::env::args().collect();
     let cli = Cli::parse(&args);
 
