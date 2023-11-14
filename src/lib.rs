@@ -7,7 +7,7 @@ use pest_derive::Parser;
 #[derive(Parser)]
 #[grammar = "composable.pest"]
 #[doc = r"Struct for parsing composable functions"]
-struct ComposableFunctionParser;
+pub struct ComposableFunctionParser;
 
 #[derive(Debug, PartialEq, Eq)]
 #[doc = r"Enum for composable function content"]

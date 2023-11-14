@@ -1,6 +1,7 @@
 ### Jetpack Compose Rust Parser
 
 Link: https://crates.io/crates/compose_parser
+Docs: https://docs.rs/compose_parser/latest/compose_parser/
 
 ### Brief Describe
 
